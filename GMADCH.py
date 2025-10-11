@@ -41,7 +41,7 @@ def calculate_scores(words, dictionary):
 def main(dictionary):
     folder_tags = defaultdict(list)
     file_tags = {}
-    for root, dirs, files in os.walk('.'):  
+    for root, dirs, files in os.walk('.'):
         for fname in files:
             if fname.endswith(('.py', '.js', '.java', '.cpp', '.go', '.ts', '.rb', '.php', '.cs', '.c', '.swift', '.kt')):
                 fpath = os.path.join(root, fname)
