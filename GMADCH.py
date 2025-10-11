@@ -67,7 +67,7 @@ COMMON_KEYWORDS = set([
     # SQL
     'select', 'from', 'where', 'insert', 'into', 'update', 'delete', 'create', 'table', 'view', 'index', 'alter', 'drop',
     'join', 'on', 'group', 'by', 'having', 'as', 'distinct', 'order', 'limit', 'offset', 'values', 'set',
-    # General English Stopwords (for comments)
+    # Common English Stopwords
     'the', 'and', 'a', 'an', 'of', 'to', 'in', 'on', 'by', 'for', 'is', 'it', 'at', 'be', 'as', 'or', 'not', 'with', 'was',
     'were', 'this', 'that', 'these', 'those', 'has', 'have', 'had', 'but', 'do', 'did', 'does', 'are', 'were', 'can', 'could',
     'should', 'would', 'may', 'might', 'must', 'will', 'shall', 'his', 'her', 'their', 'our', 'your', 'my', 'i', 'you', 'he', 'she', 'they', 'we'
@@ -147,19 +147,14 @@ def main():
     print("GMADCH Modularization Algorithm")
     print("Choose dictionary source:")
     print("1. Build from all code files (automatic)")
-    print("2. Enter your own dictionary (Python dict: {'tag1':count, ...})")
+    print("2. Enter your own tags/keywords (comma separated)")
     choice = input("Enter option number (1 or 2): ").strip()
 
     if choice == '2':
-        print("Enter your dictionary as a Python dict (e.g. {'ccxt': 20, 'numpy': 10}):")
-        user_dict_str = input()
-        try:
-            dictionary = ast.literal_eval(user_dict_str)
-            if not isinstance(dictionary, dict):
-                raise ValueError
-        except Exception:
-            print("Invalid dictionary format. Exiting.")
-            return
+        print("Enter your tags/keywords separated by commas (e.g. ccxt, numpy, trading):")
+        user_word_list = input().strip()
+        user_words = [w.strip() for w in user_word_list.split(',') if w.strip()]
+        dictionary = {w: 1 for w in user_words}
     else:
         dictionary = build_global_dictionary(all_files)
 
