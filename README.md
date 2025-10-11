@@ -48,7 +48,7 @@ GMADCH uses Levenshtein string distance and vocabulary congruence to measure con
 
 - Modularization quality is evaluated using metrics such as MoJo, MoJoFM, and $MQ = \frac{i}{i+j}$, where $i$ is the number of internal edges and $j$ the number of external edges.
 
-See the academic article (`GMADCH_v2_HDesign.tex`) for deeper theory, algorithms, and references.
+See the academic article (`GMADCH.pdf`) for deeper theory, algorithms, and references.
 
 ## References
 
